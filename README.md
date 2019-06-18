@@ -14,6 +14,6 @@
 
 - Install mongoDb
 
-- Run `mongod` to start database port for the server, default for is 27017 (`datasource.json`)
+- Run `mongod` to start database, default for is 27017 (`datasource.json`), don't stop it
 
-- Run `npm start`
+- Open new terminal tab and run `npm start`
