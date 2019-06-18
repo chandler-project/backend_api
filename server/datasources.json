@@ -1,0 +1,26 @@
+{
+    "db": {
+        "name": "db",
+        "connector": "memory"
+    },
+    "mongodb": {
+        "host": "127.0.0.1",
+        "port": 27017,
+        "url": "mongodb://localhost:27017/chandler",
+        "database": "chandler",
+        "password": "",
+        "name": "mongodb",
+        "user": "",
+        "connector": "mongodb",
+        "allowExtendedOperators": true
+    },
+    "storage": {
+        "name": "storage",
+        "connector": "loopback-component-storage",
+        "provider": "filesystem",
+        "maxFileSize": "10485760",
+        "root": "./server/images",
+        "defaultImageName": "photo",
+        "container": "chandler"
+    }
+}

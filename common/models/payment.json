@@ -1,0 +1,84 @@
+{
+    "name": "Payment",
+    "plural": "Payments",
+    "base": "PersistedModel",
+    "idInjection": true,
+    "options": {
+        "validateUpsert": true
+    },
+    "mixins": {
+        "Timestamp": true,
+        "Modified": true
+    },
+    "properties": {
+        "address": {
+            "type": "string",
+            "required": true
+        },
+        "phoneNumber": {
+            "type": "string",
+            "required": true
+        },
+        "method": {
+            "type": "string",
+            "required": true
+        },
+        "country": {
+            "type": "string",
+            "default": "Việt Nam"
+        },
+        "cardNumber": {
+            "type": "string",
+            "required": true
+        },
+        "expireOn": {
+            "type": "string",
+            "required": true
+        },
+        "firstName": {
+            "type": "string",
+            "required": true
+        },
+        "lastName": {
+            "type": "string",
+            "required": true
+        },
+        "postalCode": {
+            "type": "string"
+        },
+        "total": {
+            "type": "number"
+        },
+        "currency": {
+            "type": "string",
+            "default": "VND"
+        },
+        "orderIds": {
+            "type": [
+                "string"
+            ]
+        }
+    },
+    "validations": [],
+    "relations": {
+        "order": {
+            "type": "belongsTo",
+            "model": "Order",
+            "foreignKey": "orderId"
+        }
+    },
+    "acls": [
+        {
+            "principalType": "ROLE",
+            "principalId": "$authenticated",
+            "permission": "ALLOW"
+        },
+        {
+            "principalType": "ROLE",
+            "principalId": "$authenticated",
+            "permission": "ALLOW",
+            "property": "*"
+        }
+    ],
+    "methods": {}
+}

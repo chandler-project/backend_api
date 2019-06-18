@@ -1,0 +1,172 @@
+{
+    "name": "Deal",
+    "plural": "Deals",
+    "base": "PersistedModel",
+    "idInjection": true,
+    "options": {
+        "validateUpsert": true
+    },
+    "mixins": {
+        "Timestamp": true,
+        "Modified": true
+    },
+    "properties": {
+        "productName": {
+            "type": "string",
+            "required": true
+        },
+        "reference": {
+            "type": "string",
+            "required": true
+        },
+        "price": {
+            "type": "number",
+            "required": true
+        },
+        "shippingPrice": {
+            "type": "number",
+            "required": true
+        },
+        "currency": {
+            "type": "string",
+            "required": true,
+            "default": "VND"
+        },
+        "shippingTime": {
+            "type": "string",
+            "required": true
+        },
+        "deadline": {
+            "type": "string",
+            "required": true
+        },
+        "productDesc": {
+            "type": "string"
+        },
+        "productPics": {
+            "type": [
+                "string"
+            ]
+        },
+        "shipper": {
+            "type": "object"
+        },
+        "requesters": {
+            "type": [
+                "object"
+            ],
+            "default": []
+        },
+        "upVoters": {
+            "type": [
+                "string"
+            ],
+            "default": []
+        },
+        "downVoters": {
+            "type": [
+                "string"
+            ],
+            "default": []
+        },
+        "upvote": {
+            "type": "number",
+            "default": 0
+        },
+        "downvote": {
+            "type": "number",
+            "default": 0
+        },
+        "noOfComments": {
+            "type": "number",
+            "default": 0
+        }
+    },
+    "validations": [],
+    "relations": {
+        "category": {
+            "type": "belongsTo",
+            "model": "Category",
+            "foreignKey": "categoryId"
+        },
+        "comments": {
+            "type": "hasMany",
+            "model": "Comment",
+            "foreignKey": "dealId"
+        }
+    },
+    "acls": [
+        {
+            "principalType": "ROLE",
+            "principalId": "$authenticated",
+            "permission": "ALLOW"
+        },
+        {
+            "principalType": "ROLE",
+            "principalId": "$authenticated",
+            "permission": "ALLOW",
+            "property": "*"
+        },
+        {
+            "principalType": "ROLE",
+            "principalId": "$everyone",
+            "permission": "DENY",
+            "property": "create"
+        },
+        {
+            "principalType": "ROLE",
+            "principalId": "$everyone",
+            "permission": "DENY",
+            "property": "downvote"
+        },
+        {
+            "principalType": "ROLE",
+            "principalId": "$everyone",
+            "permission": "DENY",
+            "property": "upvote"
+        },
+        {
+            "principalType": "ROLE",
+            "principalId": "$authenticated",
+            "permission": "ALLOW",
+            "property": "upvote"
+        },
+        {
+            "principalType": "ROLE",
+            "principalId": "$authenticated",
+            "permission": "ALLOW",
+            "property": "downvote"
+        },
+        {
+            "principalType": "ROLE",
+            "principalId": "$everyone",
+            "permission": "ALLOW",
+            "property": "trending"
+        },
+        {
+            "principalType": "ROLE",
+            "principalId": "$everyone",
+            "permission": "DENY",
+            "property": "newFeeds"
+        },
+        {
+            "principalType": "ROLE",
+            "principalId": "$authenticated",
+            "permission": "ALLOW",
+            "property": "newFeeds"
+        },
+        {
+            "principalType": "ROLE",
+            "principalId": "$everyone",
+            "permission": "ALLOW",
+            "property": "findById"
+        },
+        {
+            "principalType": "ROLE",
+            "principalId": "$everyone",
+            "permission": "ALLOW",
+            "property": "relateProducts"
+        }
+    ],
+    "methods": {}
+}

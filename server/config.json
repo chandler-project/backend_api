@@ -1,0 +1,29 @@
+{
+  "restApiRoot": "/api",
+  "host": "0.0.0.0",
+  "port": 3000,
+  "remoting": {
+    "context": false,
+    "rest": {
+      "handleErrors": false,
+      "normalizeHttpPath": false,
+      "xml": false
+    },
+    "json": {
+      "strict": false,
+      "limit": "100kb"
+    },
+    "urlencoded": {
+      "extended": true,
+      "limit": "100kb"
+    },
+    "cors": false
+  },
+  "logoutSessionsOnSensitiveChanges": true,
+  "debugLog": false,
+  "googleMapKey": "AIzaSyCPCdvGsSBIuTuh9ATjMZCojZn6VHSW5Qo",
+  "allowExtendedOperators": true,
+  "firebase": {
+    "serverKey": "AAAA8eM9OJc:APA91bHYLDmfBvp6vUr9tBZNi-mNaCcU2GGt_XHzLRwRnxbPSGVbwbPXAarlzoXqxPyyQn_rGHzlw8sXUphfJR35mdJkaJ7uIp36jgpB1XxIxqQDBe2GPeG9aEK53H4Wy_eZaBHWOaYr"
+  }
+}

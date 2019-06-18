@@ -1,0 +1,38 @@
+{
+  "name": "Comment",
+  "plural": "Comments",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "mixins": {
+    "Timestamp": true,
+    "Modified": true
+  },
+  "properties": {
+    "content": {
+      "type": "string",
+      "required": true
+    },
+    "owner": {
+      "type": "object"
+    },
+    "images": {
+      "type": [
+        "string"
+      ],
+      "default": []
+    }
+  },
+  "validations": [],
+  "relations": {
+    "deal": {
+      "type": "belongsTo",
+      "model": "Deal",
+      "foreignKey": "dealId"
+    }
+  },
+  "acls": [],
+  "methods": {}
+}

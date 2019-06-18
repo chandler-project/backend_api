@@ -1,0 +1,61 @@
+{
+  "name": "SocialNetworkAccount",
+  "plural": "SocialNetworkAccounts",
+  "base": "PersistedModel",
+  "strict": true,
+  "indexes": {
+    "memberId_idx": {
+      "memberId": 1
+    }
+  },
+  "options": {
+    "validateUpsert": false,
+    "strictObjectIDCoercion": true
+  },
+  "mixins": {
+    "Timestamp": true,
+    "Modified": true
+  },
+  "properties": {
+    "accessToken": {
+      "type": "string",
+      "required": true
+    },
+    "accessTokenSecret": {
+      "type": "string"
+    },
+    "userId": {
+      "type": "string",
+      "required": true
+    },
+    "memberId": {
+      "type": "string",
+      "required": true
+    },
+    "socialNetworkId": {
+      "type": "string",
+      "required": true
+    },
+    "isDisabled": {
+      "type": "number",
+      "default": 0
+    }
+  },
+  "validations": [],
+  "relations": {
+    "member": {
+      "type": "belongsTo",
+      "model": "Member",
+      "foreignKey": "memberId"
+    }
+  },
+  "acls": [
+    {
+      "accessType": "WRITE",
+      "principalType": "ROLE",
+      "principalId": "$authenticated",
+      "permission": "ALLOW"
+    }
+  ],
+  "methods": {}
+}

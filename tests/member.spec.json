@@ -1,0 +1,43 @@
+[
+  {
+    "method": "GET",
+    "model": "Members",
+    "expect": 401
+  },
+  {
+    "method": "GET",
+    "model": "Members",
+    "username": "minh@letterink.co",
+    "password": "123456",
+    "expect": 200
+  },
+  {
+    "method": "PATCH",
+    "model": "Members/qweknalsndasdknadns",
+    "expect": 401
+  },
+  {
+    "method": "PATCH",
+    "model": "Members/123",
+    "username": "minh@letterink.co",
+    "password": "123456",
+    "expect": 401
+  },
+  {
+    "method": "PATCH",
+    "model": "Members/595bdd290be3d805f7949608",
+    "username": "minh@letterink.co",
+    "password": "123456",
+    "expect": 200
+  },
+  {
+    "method": "PATCH",
+    "model": "Members/595bdd290be3d805f7949608",
+    "username": "minh@letterink.co",
+    "password": "123456",
+    "withData": {
+      "email": "minhnguyendhth8b@gmail.com"
+    },
+    "expect": 422
+  }
+]

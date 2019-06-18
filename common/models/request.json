@@ -1,0 +1,130 @@
+{
+    "name": "Request",
+    "plural": "Requests",
+    "base": "PersistedModel",
+    "idInjection": true,
+    "options": {
+        "validateUpsert": true
+    },
+    "mixins": {
+        "Timestamp": true,
+        "Modified": true
+    },
+    "properties": {
+        "productName": {
+            "type": "string",
+            "required": true
+        },
+        "reference": {
+            "type": "string",
+            "required": true
+        },
+        "productPics": {
+            "type": [
+                "string"
+            ]
+        },
+        "price": {
+            "type": "number",
+            "required": true
+        },
+        "description": {
+            "type": "string"
+        },
+        "budget": {
+            "type": "object",
+            "required": true,
+            "default": {
+                "min": 0,
+                "max": 100
+            }
+        },
+        "currency": {
+            "type": "string",
+            "default": "VND"
+        },
+        "deadline": {
+            "type": "string",
+            "required": true
+        },
+        "address": {
+            "type": "string",
+            "required": true
+        },
+        "bidders": {
+            "type": [
+                "object"
+            ],
+            "default": []
+        },
+        "amount": {
+            "type": "number",
+            "default": 1
+        },
+        "owner": {
+            "type": "object"
+        },
+        "category": {
+            "type": "object"
+        },
+        "status": {
+            "type": "string",
+            "default": "Pending"
+        },
+        "choosen": {
+            "type": "object"
+        }
+    },
+    "validations": [],
+    "relations": {
+        "category": {
+            "type": "belongsTo",
+            "model": "Category",
+            "foreignKey": "categoryId"
+        }
+    },
+    "acls": [
+        {
+            "principalType": "ROLE",
+            "principalId": "$everyone",
+            "permission": "DENY"
+        },
+        {
+            "principalType": "ROLE",
+            "principalId": "$authenticated",
+            "permission": "ALLOW",
+            "property": "bid"
+        },
+        {
+            "principalType": "ROLE",
+            "principalId": "$authenticated",
+            "permission": "ALLOW",
+            "property": "create"
+        },
+        {
+            "principalType": "ROLE",
+            "principalId": "$everyone",
+            "permission": "ALLOW",
+            "property": "find"
+        },
+        {
+            "principalType": "ROLE",
+            "principalId": "$everyone",
+            "permission": "ALLOW",
+            "property": "findById"
+        },
+        {
+            "principalType": "ROLE",
+            "principalId": "$everyone",
+            "permission": "ALLOW",
+            "property": "newFeeds"
+        },
+        {
+            "principalType": "ROLE",
+            "principalId": "$authenticated",
+            "permission": "ALLOW",
+            "property": "chooseShipper"
+        }
+    ],
+    "methods": {}
+}

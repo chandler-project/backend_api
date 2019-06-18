@@ -1,0 +1,84 @@
+{
+    "name": "Order",
+    "plural": "Orders",
+    "base": "PersistedModel",
+    "idInjection": true,
+    "options": {
+        "validateUpsert": true,
+        "strictObjectIDCoercion": true
+    },
+    "mixins": {
+        "Timestamp": true,
+        "Modified": true
+    },
+    "properties": {
+        "requester": {
+            "type": "object"
+        },
+        "shipper": {
+            "type": "object"
+        },
+        "title": {
+            "type": "string",
+            "required": true
+        },
+        "productPrice": {
+            "type": "number",
+            "required": true
+        },
+        "shippingPrice": {
+            "type": "number",
+            "required": true
+        },
+        "spend": {
+            "type": "number"
+        },
+        "status": {
+            "type": "string",
+            "default": "pending"
+        },
+        "reason": {
+            "type": "string"
+        },
+        "item": {
+            "type": "object",
+            "default": {
+                "name": "",
+                "amount": 1
+            }
+        },
+        "requestId": {
+            "type": "string"
+        },
+        "dealId": {
+            "type": "string"
+        },
+        "address": {
+            "type": "string"
+        },
+        "phoneNumber": {
+            "type": "string"
+        }
+    },
+    "validations": [],
+    "relations": {
+        "payments": {
+            "type": "hasMany",
+            "model": "Payment",
+            "foreignKey": "orderId"
+        }
+    },
+    "acls": [
+        {
+            "principalType": "ROLE",
+            "principalId": "$everyone",
+            "permission": "DENY"
+        },
+        {
+            "principalType": "ROLE",
+            "principalId": "$authenticated",
+            "permission": "ALLOW"
+        }
+    ],
+    "methods": {}
+}

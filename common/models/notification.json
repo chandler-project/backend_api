@@ -1,0 +1,77 @@
+{
+  "name": "Notification",
+  "plural": "Notifications",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true,
+    "strictObjectIDCoercion": true
+  },
+  "mixins": {
+    "Timestamp": true,
+    "Modified": true,
+    "ReadOnly": {
+      "receiver": true
+    }
+  },
+  "properties": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "data": {
+      "type": "object",
+      "required": true,
+      "default": {
+        "memberId": "",
+        "notificationId": 0,
+        "sentence": ""
+      }
+    },
+    "receiver": {
+      "type": "string",
+      "required": true
+    },
+    "device": {
+      "type": "object",
+      "default": {
+        "id": "",
+        "os": ""
+      }
+    },
+    "status": {
+      "type": "number",
+      "required": true,
+      "default": 0
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [
+    {
+      "accessType": "*",
+      "principalType": "ROLE",
+      "principalId": "$everyone",
+      "permission": "DENY"
+    },
+    {
+      "principalType": "ROLE",
+      "principalId": "$authenticated",
+      "permission": "ALLOW",
+      "property": "find"
+    },
+    {
+      "principalType": "ROLE",
+      "principalId": "$authenticated",
+      "permission": "ALLOW",
+      "property": "seen"
+    },
+    {
+      "principalType": "ROLE",
+      "principalId": "$authenticated",
+      "permission": "ALLOW",
+      "property": "readNotification"
+    }
+  ],
+  "methods": {}
+}

@@ -1,0 +1,112 @@
+{
+    "_meta": {
+        "sources": [
+            "loopback/common/models",
+            "loopback/server/models",
+            "../common/models",
+            "./models"
+        ],
+        "mixins": [
+            "loopback/common/mixins",
+            "loopback/server/mixins",
+            "../node_modules/loopback-ds-readonly-mixin/lib",
+            "../node_modules/@mean-expert/loopback-component-realtime/dist/mixins",
+            "../node_modules/loopback-stats-mixin/dist",
+            "../node_modules/loopback-shortid-mixin",
+            "../common/mixins",
+            "./mixins"
+        ]
+    },
+    "User": {
+        "dataSource": "db",
+        "public": false,
+        "options": {
+            "emailVerificationRequired": true
+        }
+    },
+    "AccessToken": {
+        "dataSource": "db",
+        "public": false
+    },
+    "ACL": {
+        "dataSource": "db",
+        "public": false
+    },
+    "RoleMapping": {
+        "dataSource": "db",
+        "public": false,
+        "options": {
+            "strictObjectIDCoercion": true
+        }
+    },
+    "Role": {
+        "dataSource": "db",
+        "public": false
+    },
+    "Member": {
+        "dataSource": "mongodb",
+        "public": true,
+        "options": {
+            "emailVerificationRequired": true
+        }
+    },
+    "Deal": {
+        "dataSource": "mongodb",
+        "public": true
+    },
+    "Category": {
+        "dataSource": "mongodb",
+        "public": true
+    },
+    "Upload": {
+        "dataSource": "storage",
+        "public": true
+    },
+    "SocialNetworkAccount": {
+        "dataSource": "mongodb",
+        "public": false
+    },
+    "Request": {
+        "dataSource": "mongodb",
+        "public": true,
+        "options": {
+            "remoting": {
+                "sharedMethods": {
+                    "*": false,
+                    "findById": true,
+                    "bid": true,
+                    "find": true,
+                    "newFeeds": true,
+                    "chooseShipper": true
+                }
+            }
+        }
+    },
+    "Comment": {
+        "dataSource": "mongodb",
+        "public": false
+    },
+    "FeedBack": {
+        "dataSource": "mongodb",
+        "public": false
+    },
+    "Order": {
+        "dataSource": "mongodb",
+        "public": true,
+        "remoting": {
+            "sharedMethods": {
+                "*": false,
+                "confirm": true,
+                "reject": true
+            }
+        }
+    },
+    "Notification": {
+        "dataSource": "mongodb",
+        "public": false
+    },
+    "Payment": {
+        "dataSource": "mongodb",
+        "public": false
+    }
+}

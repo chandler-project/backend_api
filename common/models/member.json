@@ -1,0 +1,206 @@
+{
+    "name": "Member",
+    "plural": "Members",
+    "base": "User",
+    "idInjection": true,
+    "options": {
+        "validateUpsert": false,
+        "setPassword": true,
+        "strictObjectIDCoercion": true
+    },
+    "mixins": {
+        "Timestamp": true,
+        "Modified": true,
+        "ReadOnly": {
+            "invalidAttempts": true,
+            "lockOutTimeStamp": true
+        }
+    },
+    "inheritAcls": false,
+    "hidden": [
+        "password",
+        "isVerified"
+    ],
+    "properties": {
+        "password": {
+            "type": "string"
+        },
+        "firstName": {
+            "type": "string"
+        },
+        "lastName": {
+            "type": "string"
+        },
+        "gender": {
+            "type": "number"
+        },
+        "dateOfBirth": {
+            "type": "date"
+        },
+        "phoneNumber": {
+            "type": "string"
+        },
+        "address": {
+            "type": "string"
+        },
+        "bio": {
+            "type": "string",
+            "default": ""
+        },
+        "avatar": {
+            "type": "string"
+        },
+        "invalidAttempts": {
+            "type": "number",
+            "default": 0
+        },
+        "lockOutTimeStamp": {
+            "type": "date"
+        },
+        "device": {
+            "type": "object"
+        },
+        "socketId": {
+            "type": "string",
+            "required": false
+        },
+        "lang": {
+            "type": "string",
+            "required": false,
+            "default": "en"
+        },
+        "fbAccessToken": {
+            "type": "string"
+        },
+        "email": {
+            "type": "string"
+        },
+        "categories": {
+            "type": [
+                "object"
+            ],
+            "default": []
+        },
+        "points": {
+            "type": "number",
+            "default": 0
+        },
+        "isShipper": {
+            "type": "boolean",
+            "default": false
+        },
+        "isFirstCreateDeal": {
+            "type": "boolean",
+            "default": false
+        },
+        "isFirstCreateRequest": {
+            "type": "boolean",
+            "default": false
+        },
+        "address": {
+            "type": "string"
+        },
+        "phoneNumber": {
+            "type": "string"
+        }
+    },
+    "validations": [],
+    "relations": {
+        "feedback": {
+            "type": "hasMany",
+            "model": "FeedBack",
+            "foreignKey": "memberId"
+        }
+    },
+    "acls": [
+        {
+            "principalType": "ROLE",
+            "principalId": "$everyone",
+            "permission": "DENY"
+        },
+        {
+            "principalType": "ROLE",
+            "principalId": "$authenticated",
+            "permission": "ALLOW"
+        },
+        {
+            "principalType": "ROLE",
+            "principalId": "$everyone",
+            "permission": "ALLOW",
+            "property": "processLogin"
+        },
+        {
+            "principalType": "ROLE",
+            "principalId": "$authenticated",
+            "permission": "ALLOW",
+            "property": "chooseCategories"
+        },
+        {
+            "principalType": "ROLE",
+            "principalId": "$authenticated",
+            "permission": "ALLOW",
+            "property": "updateProfile"
+        },
+        {
+            "principalType": "ROLE",
+            "principalId": "$authenticated",
+            "permission": "ALLOW",
+            "property": "becomeShipper"
+        },
+        {
+            "principalType": "ROLE",
+            "principalId": "$everyone",
+            "permission": "ALLOW",
+            "property": "getPublicProfile"
+        },
+        {
+            "principalType": "ROLE",
+            "principalId": "$everyone",
+            "permission": "ALLOW",
+            "property": "getAllRequestByMemberId"
+        },
+        {
+            "principalType": "ROLE",
+            "principalId": "$everyone",
+            "permission": "ALLOW",
+            "property": "getAllDealByMemberId"
+        },
+        {
+            "principalType": "ROLE",
+            "principalId": "$everyone",
+            "permission": "ALLOW",
+            "property": "getAllFeedBackByMemberId"
+        },
+        {
+            "principalType": "ROLE",
+            "principalId": "$everyone",
+            "permission": "ALLOW",
+            "property": "countAllDeals"
+        },
+        {
+            "principalType": "ROLE",
+            "principalId": "$everyone",
+            "permission": "ALLOW",
+            "property": "countAllRequests"
+        },
+        {
+            "principalType": "ROLE",
+            "principalId": "$everyone",
+            "permission": "ALLOW",
+            "property": "countAllOrders"
+        },
+        {
+            "principalType": "ROLE",
+            "principalId": "$everyone",
+            "permission": "ALLOW",
+            "property": "getAllFeedBacks"
+        },
+        {
+            "principalType": "ROLE",
+            "principalId": "$everyone",
+            "permission": "ALLOW",
+            "property": "countAllFeedBacks"
+        }
+    ],
+    "methods": {}
+}

@@ -1,0 +1,58 @@
+{
+    "name": "Category",
+    "plural": "Categories",
+    "base": "PersistedModel",
+    "idInjection": true,
+    "options": {
+        "validateUpsert": true
+    },
+    "properties": {
+        "name": {
+            "type": "string",
+            "required": true
+        },
+        "slug": {
+            "type": "string",
+            "required": true
+        },
+        "description": {
+            "type": "string",
+            "required": true
+        },
+        "picture": {
+            "type": "string",
+            "required": true
+        },
+        "icon": {
+            "type": "string",
+            "required": true
+        }
+    },
+    "validations": [],
+    "relations": {
+        "deals": {
+            "type": "hasMany",
+            "model": "Deal",
+            "foreignKey": "categoryId"
+        },
+        "requests": {
+            "type": "hasMany",
+            "model": "Request",
+            "foreignKey": "categoryId"
+        }
+    },
+    "acls": [
+        {
+            "principalType": "ROLE",
+            "principalId": "$authenticated",
+            "permission": "ALLOW"
+        },
+        {
+            "principalType": "ROLE",
+            "principalId": "$authenticated",
+            "permission": "ALLOW",
+            "property": "prototype_create_deals"
+        }
+    ],
+    "methods": {}
+}
